@@ -1,6 +1,8 @@
 {
     "title": "Insight IDR",
     "insight_idr_report": "Insight IDR Report",
-    "idr_agent_version": "IDR Agent Version",
-    "idr_agent_status": "IDR Agent Status"
+    "agent_version": "IDR Agent Version",
+    "agent_status": "IDR Agent Status",
+    "collector_list": "Collectors",
+    "client_id": "Client ID"
 }
