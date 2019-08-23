@@ -1,6 +1,6 @@
 <div class="col-lg-4 col-md-6">
     <div class="panel panel-default" id="insight-idr-agent-status-widget">
-            <div class="panel-heading" data-container="body" data-i18n="insight_idr.agent_status">
+            <div class="panel-heading">
                 <h3 class="panel-title"><i class="fa fa-barcode"></i>
                     <span data-i18n="insight_idr.agent_status"></span>
                     <list-link data-url="/show/listing/insight_idr/insight_idr"></list-link>
