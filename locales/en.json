@@ -4,7 +4,7 @@
     "agent_version": "IDR Agent Version",
     "agent_status": "IDR Agent Status",
     "collector_list": "Collectors",
-    "client_id": "Client ID"
+    "client_id": "Client ID",
     "running": "Running",
     "not_running": "Not Running"
 }
