@@ -94,4 +94,35 @@ class Insight_idr_controller extends Module_controller
         $obj = new View();
         $obj->view('json', array('msg' => $out));
     }
+
+    /**
+     * Prep list of collectors
+     *
+     * @author rickheil
+     **/
+    public function get_collector_stats()
+    {
+        if(! $this->authorized()) {
+            $obj->view('json', array('msg' => array('error' => 'Not authenticated')));
+            return;
+        }
+
+        $collector_stats = new Insight_idr_model();
+        $sql = "SELECT sorted_collectors_list
+                FROM insight_idr
+                LEFT JOIN reportdata USING (serial_number)
+                ".get_machine_group_filter();
+
+        $out = [];
+        foreach ($collector_status->query($sql) as $obj) {
+            $collectors = preg_split('/\s+/', $obj->sorted_collectors_list);
+            foreach ($collectors as $collector) {
+                $out[$collector] += 1;
+            }
+            
+        }
+
+        $obj = new View();
+        $obj->view('json', array('msg' => $out));
+    }
 }

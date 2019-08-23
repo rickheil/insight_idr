@@ -65,9 +65,4 @@ class Insight_idr_model extends \Model
         return current($this->query($sql));
     }
 
-    public function get_collector_list_stats()
-    {
-        // TODO - this function will return the count of how many times each collector is configured to a device
-    }
-
 }
