@@ -57,8 +57,8 @@ class Insight_idr_model extends \Model
 
     public function get_agent_status_stats()
     {
-        $sql = "SELECT COUNT(CASE WHEN agent_status = "RUNNING" THEN 1 END) AS agent_running,
-                        COUNT(CASE WHEN agent_status != "RUNNING" THEN 1 END) AS agent_not_running
+        $sql = "SELECT COUNT(CASE WHEN agent_status = 'RUNNING' THEN 1 END) AS agent_running,
+                        COUNT(CASE WHEN agent_status != 'RUNNING' THEN 1 END) AS agent_not_running
                         FROM insight_idr
                         LEFT JOIN reportdata USING (serial_number)
                         ".get_machine_group_filter();
@@ -70,4 +70,4 @@ class Insight_idr_model extends \Model
         // TODO - this function will return the count of how many times each collector is configured to a device
     }
 
-
+}
