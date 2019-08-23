@@ -74,7 +74,7 @@
 	        	$('td:eq(0)', nRow).html(link);
                 
             var agent_status = $('td:eq(5)', nRow).html();
-            $('td:eq(3)', nRow).html(function(){
+            $('td:eq(5)', nRow).html(function(){
                 if( agent_status == 'NOT RUNNING'){
                     return '<span class="label label-warning">'+i18n.t('insight_idr.not_running')+'</span>';
 								} else if( agent_status == 'RUNNING'){
