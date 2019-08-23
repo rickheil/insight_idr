@@ -29,3 +29,61 @@
     </div> <!-- /span 12 -->
   </div> <!-- /row -->
 </div>  <!-- /container -->
+
+<script type="text/javascript">
+	$(document).on('appUpdate', function(e){
+		var oTable = $('.table').DataTable();
+		oTable.ajax.reload();
+		return;
+	});
+	$(document).on('appReady', function(e, lang) {
+        // Get modifiers from data attribute
+        var mySort = [], // Initial sort
+            hideThese = [], // Hidden columns
+            col = 0, // Column counter
+            runtypes = [], // Array for runtype column
+            columnDefs = [{ visible: false, targets: hideThese }]; //Column Definitions
+        $('.table th').map(function(){
+            columnDefs.push({name: $(this).data('colname'), targets: col});
+            if($(this).data('sort')){
+              mySort.push([col, $(this).data('sort')])
+            }
+            if($(this).data('hide')){
+              hideThese.push(col);
+            }
+            col++
+        });
+	    oTable = $('.table').dataTable( {
+            ajax: {
+                url: appUrl + '/datatables/data',
+                type: "POST",
+                data: function( d ){
+                  d.mrColNotEmpty = "mdm_status.id"
+                }
+			},
+            dom: mr.dt.buttonDom,
+            buttons: mr.dt.buttons,
+            order: mySort,
+            columnDefs: columnDefs,
+		    createdRow: function( nRow, aData, iDataIndex ) {
+	        	// Update name in first column to link
+	        	var name=$('td:eq(0)', nRow).html();
+	        	if(name == ''){name = "No Name"};
+	        	var sn=$('td:eq(1)', nRow).html();
+	        	var link = mr.getClientDetailLink(name, sn);
+	        	$('td:eq(0)', nRow).html(link);
+                
+            var agent_status = $('td:eq(5)', nRow).html();
+            $('td:eq(3)', nRow).html(function(){
+                if( agent_status == 'NOT RUNNING'){
+                    return '<span class="label label-warning">'+i18n.t('insight_idr.not_running')+'</span>';
+								} else if( agent_status == 'RUNNING'){
+										return '<span class="label label-success">'+i18n.t('insight_idr.running')+'</span>';
+								}
+            });
+	        }
+    });
+  });
+</script>
+
+<?php $this->view('partials/foot'); ?>
