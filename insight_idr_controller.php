@@ -117,9 +117,12 @@ class Insight_idr_controller extends Module_controller
         foreach ($collector_status->query($sql) as $obj) {
             $collectors = preg_split('/\s+/', $obj->sorted_collectors_list);
             foreach ($collectors as $collector) {
-                $out[$collector] += 1;
+                if (array_key_exists($collector, $out)) {
+                    $out[$collector] += 1;
+                } else {
+                    $out[$collector] = 1;
+                }
             }
-            
         }
 
         $obj = new View();
