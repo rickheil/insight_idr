@@ -28,6 +28,13 @@ def get_component_states():
     return json.load(open("/opt/rapid7/ir_agent/components/bootstrap/common/components.cfg"))
 
 
+def list_collectors(common_json):
+    collectors = ""
+    for item in common_json['SortedCollectorsList']:
+        collectors = collectors + item['Collector'] + " "
+    return collectors.rstrip()
+
+
 def main():
     '''Gets data and assembles a plist for upload'''
     # Create cache dir if it does not exist
@@ -46,7 +53,7 @@ def main():
 
     result = {}
     result.update({'client_id': common_json['Client-ID']})
-    result.update({'sorted_collectors_list': common_json['SortedCollectorsList']})
+    result.update({'sorted_collectors_list': list_collectors(common_json)})
     result.update({'agent_version': get_agent_version()})
     result.update({'agent_status': component_states['Component-States']['insight_agent']})
 
