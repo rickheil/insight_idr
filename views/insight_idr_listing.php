@@ -14,10 +14,10 @@
                 <th data-i18n="listing.computername" data-colname='machine.computer_name'></th>
                 <th data-i18n="serial" data-colname='reportdata.serial_number'></th>
                 <th data-i18n="username" data-colname='reportdata.long_username'></th>
-                <th data-i18n="idr.client_id" data-colname='insight_idr.client_id'></th>
-                <th data-i18n="idr.agent_version" data-colname='insight_idr.agent_version'></th>
-                <th data-i18n="idr.agent_status" data-colname='insight_idr.agent_status'></th>
-                <th data-i18n="idr.collector_list" data-colname='insight_idr.sorted_collectors_list'></th>
+                <th data-i18n="insight_idr.client_id" data-colname='insight_idr.client_id'></th>
+                <th data-i18n="insight_idr.agent_version" data-colname='insight_idr.agent_version'></th>
+                <th data-i18n="insight_idr.agent_status" data-colname='insight_idr.agent_status'></th>
+                <th data-i18n="insight_idr.collector_list" data-colname='insight_idr.sorted_collectors_list'></th>
               </tr>
             </thead>
             <tbody>
