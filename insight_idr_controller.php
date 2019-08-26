@@ -39,7 +39,7 @@ class Insight_idr_controller extends Module_controller
         } else {
             $prm = new Insight_idr_model;
             foreach ($prm->retrieve_records($serial) as $insight_idr) {
-                $out[] = $insight_idr->rs;
+                $out = $insight_idr->rs;
             }
         }
 
