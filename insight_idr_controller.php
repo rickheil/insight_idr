@@ -114,16 +114,18 @@ class Insight_idr_controller extends Module_controller
                 ".get_machine_group_filter();
 
         $out = [];
-        foreach ($collector_status->query($sql) as $obj) {
+                foreach ($collector_stats->query($sql) as $obj) {
             $collectors = preg_split('/\s+/', $obj->sorted_collectors_list);
             foreach ($collectors as $collector) {
-                if (array_key_exists($collector, $out)) {
-                    $out[$collector] += 1;
+                $location = array_search($collector, array_column($out, "collector"));
+                if ($location) {
+                        $out[$location]["count"]++;
                 } else {
-                    $out[$collector] = 1;
+                        array_push($out, array("collector" => $collector, "count" => 1));
                 }
             }
         }
+
 
         $obj = new View();
         $obj->view('json', array('msg' => $out));
