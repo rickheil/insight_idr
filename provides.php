@@ -12,4 +12,7 @@ return array(
     'reports' => array(
         'insight_idr' => array('view' => 'insight_idr_report', 'i18n' => 'insight_idr.insight_idr_report')
     ),
+    'detail_widgets' => array(
+        'ard' => ['view' => 'insight_idr_detail_widget']
+    ),
 );
