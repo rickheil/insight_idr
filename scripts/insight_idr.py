@@ -48,6 +48,11 @@ def main():
             print "Manual check: skipping"
             exit(0)
 
+    # Bail on checks if agent is not installed
+    if not os.path.exists("/opt/rapid7/ir_agent"):
+        print("Insight Agent not installed to /opt/rapid7")
+        exit(1)
+
     common_json = get_common_json()
     component_states = get_component_states()
 
